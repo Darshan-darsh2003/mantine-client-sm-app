@@ -2,12 +2,13 @@ import React from "react";
 import "./App.css";
 import { Login } from "./pages/auth/login/Login";
 import Register from "./pages/auth/register/Register";
-import AppProvider from "./reduxModules/appStore/AppProvider";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import MainAppShell from "./appShell/MainAppShell";
 import { Page404 } from "./utils/uiUtils/page404/Page404";
-import HomePage from "./pages/home/HomePage";
-import { useLogin } from "./reduxModules/auth/hook/authHook";
+import Introduction from "./pages/Introduction/Introduction";
+// import { useLogin } from "./reduxModules/auth/hook/authHook";
+import { ForgotPassword } from "./pages/auth/forgotPassword/ForgotPassword";
+import Home from "./pages/home/Home";
 
 const USER_TYPES = {
   PUBLIC: "PUBLIC USER",
@@ -15,9 +16,9 @@ const USER_TYPES = {
 };
 
 function App() {
-  const { isLoggedIn } = useLogin();
-  const CURRENT_USER_TYPE = isLoggedIn ? USER_TYPES.USER : USER_TYPES.PUBLIC;
-
+  // const { isLoggedIn } = useLogin();
+  // const CURRENT_USER_TYPE = isLoggedIn ? USER_TYPES.USER : USER_TYPES.PUBLIC;
+  const CURRENT_USER_TYPE = USER_TYPES.USER;
   return (
     <div className="App">
       <BrowserRouter>
@@ -63,7 +64,7 @@ function AppRoutes({ CURRENT_USER_TYPE }: { CURRENT_USER_TYPE: string }) {
         path="/"
         element={
           <PublicElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
-            <HomePage />
+            <Introduction />
           </PublicElement>
         }
       />
@@ -84,6 +85,14 @@ function AppRoutes({ CURRENT_USER_TYPE }: { CURRENT_USER_TYPE: string }) {
         }
       />
       <Route
+        path="/forgotPassword"
+        element={
+          <PublicElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
+            <ForgotPassword />
+          </PublicElement>
+        }
+      />
+      <Route
         path="/404"
         element={
           <PublicElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
@@ -92,10 +101,50 @@ function AppRoutes({ CURRENT_USER_TYPE }: { CURRENT_USER_TYPE: string }) {
         }
       />
       <Route
-        path="/app/*"
+        path="/app/"
         element={
           <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
-            <MainAppShell />
+            <MainAppShell children={<Home />} />
+          </PrivateElement>
+        }
+      />
+      <Route
+        path="/app/profile"
+        element={
+          <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
+            <MainAppShell children={<>Profile</>} />
+          </PrivateElement>
+        }
+      />
+      <Route
+        path="/app/settings"
+        element={
+          <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
+            <MainAppShell children={<>Settings</>} />
+          </PrivateElement>
+        }
+      />
+      <Route
+        path="/app/notifications"
+        element={
+          <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
+            <MainAppShell children={<>Notifications</>} />
+          </PrivateElement>
+        }
+      />
+      <Route
+        path="/app/messages"
+        element={
+          <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
+            <MainAppShell children={<>Messages</>} />
+          </PrivateElement>
+        }
+      />
+      <Route
+        path="/app/transactions"
+        element={
+          <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
+            <MainAppShell children={<>Transactions</>} />
           </PrivateElement>
         }
       />

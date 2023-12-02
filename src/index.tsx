@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <>
     <ColorSchemeScript />
-    <MantineProvider theme={theme}>
+    <MantineProvider theme={theme} defaultColorScheme="dark">
       <AppProvider>
         <App />
       </AppProvider>

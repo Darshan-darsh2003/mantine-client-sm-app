@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Paper,
   Title,
@@ -11,9 +11,9 @@ import {
   Center,
   Box,
   rem,
-} from '@mantine/core';
-import { IconArrowLeft } from '@tabler/icons-react';
-import classes from './ForgotPassword.module.css';
+} from "@mantine/core";
+import { IconArrowLeft } from "@tabler/icons-react";
+import classes from "./ForgotPassword.module.css";
 
 export function ForgotPassword() {
   return (
@@ -28,9 +28,17 @@ export function ForgotPassword() {
       <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
         <TextInput label="Your email" placeholder="me@mantine.dev" required />
         <Group justify="space-between" mt="lg" className={classes.controls}>
-          <Anchor c="dimmed" size="sm" className={classes.control}>
+          <Anchor
+            c="dimmed"
+            size="sm"
+            href="/login"
+            className={classes.control}
+          >
             <Center inline>
-              <IconArrowLeft style={{ width: rem(12), height: rem(12) }} stroke={1.5} />
+              <IconArrowLeft
+                style={{ width: rem(12), height: rem(12) }}
+                stroke={1.5}
+              />
               <Box ml={5}>Back to the login page</Box>
             </Center>
           </Anchor>
