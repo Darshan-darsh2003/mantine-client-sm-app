@@ -1,24 +1,80 @@
+import React from "react";
 import {
   Autocomplete,
   Box,
   Grid,
   Group,
+  Image,
   ScrollArea,
   Title,
   rem,
 } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
-import React from "react";
+import { Carousel } from "@mantine/carousel";
+import classes from "./Home.module.css";
+
+const data = [
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-3.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-4.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-6.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-10.png",
+];
+
+// maxHeight: "calc(100vh - 200px)",
 
 const Home = () => {
   return (
     <Grid m={10}>
       <Grid.Col span={8.5}>
-        <Grid.Col span={12}>
-          <Title order={3}>Stories</Title>
-
-          <Box style={{ border: "1px solid #1BAAF7" }} h={100}>
-            Status
+        <Grid.Col>
+          <Box style={{ border: "1px solid #1BAAF7" }} h={120}>
+            <Carousel
+              classNames={{
+                slide: classes.mantineSlide,
+                container: classes.mantineSlideContainer,
+              }}
+              controlsOffset="0"
+              controlSize={35}
+              // withIndicators
+              slideSize="100px"
+              slideGap="xl"
+              align="start"
+              // slidesToScroll={2}
+              // onNextSlide={}
+              onSlideChange={(e) => console.log("Current slide", e)}
+            >
+              <Carousel.Slide pr={0} style={{ border: "5px solid lightgreen" }}>
+                Your story
+              </Carousel.Slide>
+              <Carousel.Slide pr={0}>
+                <Image
+                  radius="md"
+                  w="100%"
+                  fit="contain"
+                  src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8fDA%3D"
+                />
+              </Carousel.Slide>
+              {data?.map((item, index) => {
+                console.log(`${item}`);
+                return (
+                  <Carousel.Slide key={index} pr={0}>
+                    <Image
+                      radius="md"
+                      w="100%"
+                      // h="100%"
+                      fit="contain"
+                      src={`${item}`}
+                    />
+                  </Carousel.Slide>
+                );
+              })}
+            </Carousel>
           </Box>
         </Grid.Col>
         <Grid.Col span={12}>
