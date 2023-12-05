@@ -1,85 +1,39 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Autocomplete,
   Box,
+  Button,
   Grid,
   Group,
-  Image,
   ScrollArea,
   Title,
   rem,
 } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
-import { Carousel } from "@mantine/carousel";
-import classes from "./Home.module.css";
-
-const data = [
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-3.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-4.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-6.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-10.png",
-];
+import Stories from "../../components/stories/Stories";
 
 // maxHeight: "calc(100vh - 200px)",
 
 const Home = () => {
+  const viewport = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () =>
+    viewport.current!.scrollTo({ top: viewport.current!.scrollHeight, behavior: 'smooth' });
+
+  const scrollToCenter = () =>
+    viewport.current!.scrollTo({ top: viewport.current!.scrollHeight / 2, behavior: 'smooth' });
+
+  const scrollToTop = () => viewport.current!.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
     <Grid m={10}>
-      <Grid.Col span={8.5}>
+      <Grid.Col span={{xl:8.5,lg:8.5,md:12,sm:12,xs:12}}>
         <Grid.Col>
-          <Box style={{ border: "1px solid #1BAAF7" }} h={120}>
-            <Carousel
-              classNames={{
-                slide: classes.mantineSlide,
-                container: classes.mantineSlideContainer,
-              }}
-              controlsOffset="0"
-              controlSize={35}
-              // withIndicators
-              slideSize="100px"
-              slideGap="xl"
-              align="start"
-              // slidesToScroll={2}
-              // onNextSlide={}
-              onSlideChange={(e) => console.log("Current slide", e)}
-            >
-              <Carousel.Slide pr={0} style={{ border: "5px solid lightgreen" }}>
-                Your story
-              </Carousel.Slide>
-              <Carousel.Slide pr={0}>
-                <Image
-                  radius="md"
-                  w="100%"
-                  fit="contain"
-                  src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8fDA%3D"
-                />
-              </Carousel.Slide>
-              {data?.map((item, index) => {
-                console.log(`${item}`);
-                return (
-                  <Carousel.Slide key={index} pr={0}>
-                    <Image
-                      radius="md"
-                      w="100%"
-                      // h="100%"
-                      fit="contain"
-                      src={`${item}`}
-                    />
-                  </Carousel.Slide>
-                );
-              })}
-            </Carousel>
-          </Box>
+         <Stories/>
         </Grid.Col>
         <Grid.Col span={12}>
           <Title order={3}>Posts</Title>
-          <ScrollArea h="70vh" style={{ border: "1px solid #1BAAF7" }}>
+          <ScrollArea.Autosize mah={{xl:'70vh',lg:'70vh',md:'500px',sm:'500px',xs:'500px'}} style={{ border: "1px solid #1BAAF7"  }}  viewportRef={viewport}>
             <h1>Home</h1>
             <h1>Home</h1>
             <h1>Home</h1>
@@ -98,10 +52,21 @@ const Home = () => {
             <h1>Home</h1>
             <h1>Home</h1>
             <h1>Home</h1>
-          </ScrollArea>
+          </ScrollArea.Autosize>
+          <Group justify="center">
+        <Button onClick={scrollToBottom} variant="outline">
+          Scroll to bottom
+        </Button>
+        <Button onClick={scrollToCenter} variant="outline">
+          Scroll to center
+        </Button>
+        <Button onClick={scrollToTop} variant="outline">
+          Scroll to top
+        </Button>
+      </Group>
         </Grid.Col>
       </Grid.Col>
-      <Grid.Col span={3.5}>
+      <Grid.Col span={{xl:3.5,lg:3.5,md:12,sm:12,xs:12}}>
         <Group>
           <Box
             p={5}
@@ -126,7 +91,7 @@ const Home = () => {
               visibleFrom="xs"
             />
           </Box>
-          <ScrollArea h={350} w="100%" style={{ border: "1px solid #1BAAF7" }}>
+          <ScrollArea h={{xl:'35vh',lg:'35vh',md:400,sm:400,xs:400}} w="100%" style={{ border: "1px solid #1BAAF7" }}>
             <h1>Home</h1>
             <h1>Home</h1>
             <h1>Home</h1>
@@ -174,7 +139,7 @@ const Home = () => {
               visibleFrom="xs"
             />
           </Box>
-          <ScrollArea h={350} w="100%" style={{ border: "1px solid #1BAAF7" }}>
+          <ScrollArea   h={{xl:'35vh',lg:'35vh',md:400,sm:400,xs:400}} w="100%" style={{ border: "1px solid #1BAAF7" }}>
             <h1>Home</h1>
             <h1>Home</h1>
             <h1>Home</h1>

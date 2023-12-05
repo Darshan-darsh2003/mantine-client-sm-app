@@ -8,8 +8,9 @@ interface MainAppShellProps {
 }
 
 function MainAppShell({ children }: MainAppShellProps) {
-  const { width } = useElementSize();
+  const { width,height } = useElementSize();
 
+  const appShellMainHeight = `calc(${height}px + 10vh)`;
   return (
     <AppShell header={{ height: width < 550 ? 60 : 70 }}>
       <AppShell.Header
@@ -18,10 +19,11 @@ function MainAppShell({ children }: MainAppShellProps) {
       >
         <Header />
       </AppShell.Header>
-      <AppShell.Navbar>
+      <AppShell.Navbar style={{maxHeight: "calc(100vh - 30vh)",height:'auto'}}>
         <Navbar />
       </AppShell.Navbar>
-      <AppShell.Main ml={80}>{children}</AppShell.Main>
+      <AppShell.Main style={{ height: appShellMainHeight, overflowY: 'auto' }} ml={80}>
+        {children}</AppShell.Main>
     </AppShell>
   );
 }

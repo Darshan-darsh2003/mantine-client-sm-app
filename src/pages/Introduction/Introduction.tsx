@@ -93,7 +93,7 @@ function Introduction() {
           </ActionIcon> */}
         </Group>
       </AppShell.Header>
-      <AppShell.Main mt={20}>
+      <AppShell.Main >
         <Grid className={classes.wrapper}>
           <Grid.Col span={{ xl: 7, lg: 7, md: 12, sm: 12, xs: 12 }}>
             <Container

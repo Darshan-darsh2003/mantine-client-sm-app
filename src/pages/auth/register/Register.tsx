@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TextInput,
   PasswordInput,
@@ -8,11 +8,31 @@ import {
   Text,
   Container,
   Button,
+  Avatar,
+  Box,
 } from "@mantine/core";
 import classes from "./Register.module.css";
 import { useForm } from "@mantine/form";
+import UploadAvatarModal from "./components/UploadAvatarModal";
+
 
 const Register = () => {
+
+  const [fileUploadModal,setFileUploadModal]=useState(false)
+  
+const data = [
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-4.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-3.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-6.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png",
+  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-10.png",
+];
+
   const form = useForm({
     initialValues: {
       email: "",
@@ -44,6 +64,7 @@ const Register = () => {
 
   return (
     <Container size={420} my={40}>
+      <UploadAvatarModal fileUploadModal={fileUploadModal} setFileUploadModal={setFileUploadModal}/>
       <Title ta="center" className={classes.title}>
         Hello there!
       </Title>
@@ -59,6 +80,10 @@ const Register = () => {
           style={{ display: "flex", flexDirection: "column", gap: "10px" }}
           onSubmit={form.onSubmit((values) => console.log(values))}
         >
+           <Box className={classes.awatarBox} >
+           <Avatar onClick={()=>setFileUploadModal(true)} radius="xl" className={classes.awatar}  size="lg" />
+            <Text>Select Image</Text>
+           </Box>
           <TextInput
             label="First Name"
             placeholder="John"
@@ -103,6 +128,7 @@ const Register = () => {
               form.setFieldValue("confirm_password", e.currentTarget.value)
             }
           />
+          
           <Button type="submit" fullWidth mt="xl">
             Sign in
           </Button>

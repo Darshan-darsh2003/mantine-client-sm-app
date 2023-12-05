@@ -1,0 +1,49 @@
+.mantineSlideContainer{
+    margin: 10px ;
+    display: flex;
+    gap: 20px;
+   }
+   
+   .mantineSlide{
+    /* background-color: lightblue; */
+    height: 130px;
+    width: 150px;
+    background: transparent;
+    /* border-radius: 50%; */
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.slideImage{
+    border-radius: 50%;
+    min-height: 100px;
+    height: 100px;
+    width: 100px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.2s ease-in;
+   }
+.slideImage:hover{
+    transform: scale(1.05);
+    border: 3px solid #fff;
+    transition: 0.3s ease-in-out;
+   }
+
+.yourStory{
+    border-radius: 50%;
+    height: 100px;
+    min-height: 95px;
+    width: 100px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.2s ease-in;
+    border: 4px solid green;
+
+   }
+
+.yourStory:hover{
+    transform: scale(1.05);
+    border: 4px solid #fff;
+    transition: 0.3s ease-in-out;
+   }
