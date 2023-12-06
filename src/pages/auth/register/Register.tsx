@@ -17,21 +17,8 @@ import UploadAvatarModal from "./components/UploadAvatarModal";
 
 
 const Register = () => {
-
-  const [fileUploadModal,setFileUploadModal]=useState(false)
   
-const data = [
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-4.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-3.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-6.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png",
-  "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-10.png",
-];
+  const [fileUploadModal,setFileUploadModal]=useState(false)
 
   const form = useForm({
     initialValues: {
@@ -129,8 +116,9 @@ const data = [
             }
           />
           
-          <Button type="submit" fullWidth mt="xl">
-            Sign in
+          <Button variant="gradient"
+      gradient={{ from: 'blue', to: 'cyan', deg: 90 }} type="submit" fullWidth mt="xl">
+            Sign Up
           </Button>
         </form>
       </Paper>

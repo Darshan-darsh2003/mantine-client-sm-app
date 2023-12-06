@@ -26,7 +26,7 @@ export function Login() {
       </Text>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Email" placeholder="you@mantine.dev" required />
+        <TextInput label="Email" placeholder="you@gmail.com" required />
         <PasswordInput
           label="Password"
           placeholder="Your password"
@@ -39,7 +39,8 @@ export function Login() {
             Forgot password?
           </Anchor>
         </Group>
-        <Button fullWidth mt="xl">
+        <Button variant="gradient"
+      gradient={{ from: 'blue', to: 'cyan', deg: 90 }} fullWidth mt="xl">
           Sign in
         </Button>
       </Paper>

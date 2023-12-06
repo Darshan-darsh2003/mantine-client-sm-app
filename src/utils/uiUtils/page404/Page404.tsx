@@ -9,9 +9,12 @@ import {
 import image from "./image.svg";
 import classes from "./Page404.module.css";
 import { useNavigate } from "react-router-dom";
+import { useLogin } from "../../../reduxModules/auth/hook/authHook";
 
 export function Page404() {
   const navigate = useNavigate();
+  const {isLoggedIn}=useLogin()
+
   return (
     <Container className={classes.root}>
       <SimpleGrid
@@ -37,7 +40,11 @@ export function Page404() {
             mt="xl"
             className={classes.control}
             onClick={() => {
-              navigate("/");
+              if(isLoggedIn){
+                navigate('/app')
+              }else{
+                navigate('/')
+              }
             }}
           >
             Get back to home page

@@ -9,6 +9,7 @@ import Introduction from "./pages/Introduction/Introduction";
 // import { useLogin } from "./reduxModules/auth/hook/authHook";
 import { ForgotPassword } from "./pages/auth/forgotPassword/ForgotPassword";
 import Home from "./pages/home/Home";
+import SearchPage from "./pages/search/SearchPage";
 
 const USER_TYPES = {
   PUBLIC: "PUBLIC USER",
@@ -76,6 +77,7 @@ function AppRoutes({ CURRENT_USER_TYPE }: { CURRENT_USER_TYPE: string }) {
           </PublicElement>
         }
       />
+
       <Route
         path="/register"
         element={
@@ -105,6 +107,14 @@ function AppRoutes({ CURRENT_USER_TYPE }: { CURRENT_USER_TYPE: string }) {
         element={
           <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
             <MainAppShell children={<Home />} />
+          </PrivateElement>
+        }
+      />
+      <Route
+        path="/app/search"
+        element={
+          <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
+            <MainAppShell children={<SearchPage />} />
           </PrivateElement>
         }
       />
