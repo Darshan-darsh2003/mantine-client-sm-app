@@ -1,13 +1,5 @@
 import React, { useRef } from "react";
-import {
-  Autocomplete,
-  Button,
-  Grid,
-  Group,
-  ScrollArea,
-  Title,
-  rem,
-} from "@mantine/core";
+import { Autocomplete, Grid, ScrollArea, Title, rem } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 import Stories from "../../components/stories/Stories";
 import { FriendCard } from "../../components/friends/FriendCard";
@@ -16,20 +8,6 @@ import { FriendCard } from "../../components/friends/FriendCard";
 const Home = () => {
   const viewport = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () =>
-    viewport.current!.scrollTo({
-      top: viewport.current!.scrollHeight,
-      behavior: "smooth",
-    });
-
-  const scrollToCenter = () =>
-    viewport.current!.scrollTo({
-      top: viewport.current!.scrollHeight / 2,
-      behavior: "smooth",
-    });
-
-  const scrollToTop = () =>
-    viewport.current!.scrollTo({ top: 0, behavior: "smooth" });
   return (
     <Grid m={10}>
       <Grid.Col span={{ xl: 8.5, lg: 8.5, md: 12, sm: 12, xs: 12 }}>
@@ -46,7 +24,7 @@ const Home = () => {
               sm: "500px",
               xs: "500px",
             }}
-            style={{ border: "1px solid #1BAAF7" }}
+            // style={{ border: "1px solid #1BAAF7" }}
             viewportRef={viewport}
           >
             <h1>Home</h1>
@@ -68,17 +46,6 @@ const Home = () => {
             <h1>Home</h1>
             <h1>Home</h1>
           </ScrollArea.Autosize>
-          <Group justify="center">
-            <Button onClick={scrollToBottom} variant="outline">
-              Scroll to bottom
-            </Button>
-            <Button onClick={scrollToCenter} variant="outline">
-              Scroll to center
-            </Button>
-            <Button onClick={scrollToTop} variant="outline">
-              Scroll to top
-            </Button>
-          </Group>
         </Grid.Col>
       </Grid.Col>
       <Grid.Col span={{ xl: 3.5, lg: 3.5, md: 12, sm: 12, xs: 12 }}>
@@ -112,15 +79,24 @@ const Home = () => {
         <ScrollArea
           h={{ xl: "90vh", lg: "90vh" }}
           // w="100%"
-          style={{ border: "1px solid #1BAAF7" }}
+          // style={{ border: "1px solid #1BAAF7" }}
         >
-          {Array(10)
-            .fill(null)
-            .map((element, index) => (
-              <Grid.Col span={{ lg: 4, xl: 4, md: 6, sm: 6, xs: 12 }}>
-                <FriendCard />
-              </Grid.Col>
-            ))}
+          <Grid p={5}>
+            {Array(10)
+              .fill(null)
+              .map((element, index) => (
+                <Grid.Col
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  span={{ lg: 12, xl: 12, md: 6, sm: 6, xs: 12 }}
+                >
+                  <FriendCard />
+                </Grid.Col>
+              ))}
+          </Grid>
         </ScrollArea>
       </Grid.Col>
     </Grid>
