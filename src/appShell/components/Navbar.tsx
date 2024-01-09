@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Center,
-  Tooltip,
-  UnstyledButton,
-  Stack,
-  rem,
-  Skeleton,
-} from "@mantine/core";
+import { Center, Tooltip, UnstyledButton, Stack, rem, Skeleton } from "@mantine/core";
 import {
   IconHome2,
   IconSettings,
@@ -43,12 +36,16 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 }
 
 const mockdata = [
-  { icon: IconHome2, label: "Home",link:'/app/' },
-  { icon: IconSearch, label: "Search",link:'/app/search' },
-  { icon: IconVideo, label: "Videos",link:'/app/videos' },
-  { icon: IconNotification, label: "Notifications",link:'/app/notifications' },
-  { icon: IconMessage, label: "Conversation",link:'/app/conversation' },
-  { icon: IconSettings, label: "Settings",link:'/app/settings' },
+  { icon: IconHome2, label: "Home", link: "/app/" },
+  { icon: IconSearch, label: "Search", link: "/app/search" },
+  { icon: IconVideo, label: "Videos", link: "/app/videos" },
+  {
+    icon: IconNotification,
+    label: "Notifications",
+    link: "/app/notifications",
+  },
+  { icon: IconMessage, label: "Conversation", link: "/app/conversation" },
+  { icon: IconSettings, label: "Settings", link: "/app/settings" },
 ];
 
 export function Navbar() {
@@ -103,16 +100,9 @@ export function Navbar() {
       </div>
 
       <Stack justify="center" gap={5}>
-        {!loading ? (
-          <NavbarLink icon={IconSwitchHorizontal} label="Change account" />
-        ) : (
-          <Skeleton w={50} h={50} />
-        )}
-        {!loading ? (
-          <NavbarLink icon={IconLogout} label="Logout" />
-        ) : (
-          <Skeleton w={50} h={50} />
-        )}
+        <NavbarLink icon={IconSwitchHorizontal} label="Change account" />
+
+        <NavbarLink icon={IconLogout} label="Logout" />
       </Stack>
     </nav>
   );

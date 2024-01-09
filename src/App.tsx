@@ -77,6 +77,7 @@ function AppRoutes({ CURRENT_USER_TYPE }: { CURRENT_USER_TYPE: string }) {
           </PublicElement>
         }
       />
+
       <Route
         path="/register"
         element={
@@ -122,6 +123,14 @@ function AppRoutes({ CURRENT_USER_TYPE }: { CURRENT_USER_TYPE: string }) {
         element={
           <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
             <MainAppShell children={<>Videos</>} />
+          </PrivateElement>
+        }
+      />
+      <Route
+        path="/app/search"
+        element={
+          <PrivateElement CURRENT_USER_TYPE={CURRENT_USER_TYPE}>
+            <MainAppShell children={<SearchPage />} />
           </PrivateElement>
         }
       />
