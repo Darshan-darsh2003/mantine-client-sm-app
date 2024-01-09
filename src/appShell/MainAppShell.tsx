@@ -19,7 +19,7 @@ function MainAppShell({ children }: MainAppShellProps) {
       >
         <Header />
       </AppShell.Header>
-      <AppShell.Navbar style={{maxHeight: "calc(100vh - 30vh)",height:'auto'}}>
+      <AppShell.Navbar>
         <Navbar />
       </AppShell.Navbar>
       <AppShell.Main style={{ height: appShellMainHeight, overflowY: 'auto' }} ml={80}>

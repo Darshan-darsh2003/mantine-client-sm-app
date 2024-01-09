@@ -14,6 +14,7 @@ import {
 } from "@mantine/core";
 import { IconArrowLeft } from "@tabler/icons-react";
 import classes from "./ForgotPassword.module.css";
+import ResetPassword from "./components/ResetPassword";
 
 export function ForgotPassword() {
   return (
@@ -26,7 +27,7 @@ export function ForgotPassword() {
       </Text>
 
       <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
-        <TextInput label="Your email" placeholder="me@mantine.dev" required />
+        <TextInput label="Your email" placeholder="you@gmail.com" required />
         <Group justify="space-between" mt="lg" className={classes.controls}>
           <Anchor
             c="dimmed"
@@ -42,9 +43,17 @@ export function ForgotPassword() {
               <Box ml={5}>Back to the login page</Box>
             </Center>
           </Anchor>
-          <Button className={classes.control}>Reset password</Button>
+          <Button variant="gradient"
+      gradient={{ from: 'blue', to: 'cyan', deg: 90 }} className={classes.control}>Reset password</Button>
         </Group>
-      </Paper>
+        <Group
+>
+      </Group>   
+     </Paper>
+     <Paper  withBorder shadow="md" p={30} radius="md" mt="xl">
+
+        <ResetPassword/>
+        </Paper>
     </Container>
   );
 }

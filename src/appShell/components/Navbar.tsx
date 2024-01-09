@@ -19,6 +19,7 @@ import {
 } from "@tabler/icons-react";
 // import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from "./Navbar.module.css";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarLinkProps {
   icon: typeof IconHome2;
@@ -42,17 +43,18 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 }
 
 const mockdata = [
-  { icon: IconHome2, label: "Home" },
-  { icon: IconSearch, label: "Search" },
-  { icon: IconVideo, label: "Videos" },
-  { icon: IconNotification, label: "Notifications" },
-  { icon: IconMessage, label: "Messages" },
-  { icon: IconSettings, label: "Settings" },
+  { icon: IconHome2, label: "Home",link:'/app/' },
+  { icon: IconSearch, label: "Search",link:'/app/search' },
+  { icon: IconVideo, label: "Videos",link:'/app/videos' },
+  { icon: IconNotification, label: "Notifications",link:'/app/notifications' },
+  { icon: IconMessage, label: "Conversation",link:'/app/conversation' },
+  { icon: IconSettings, label: "Settings",link:'/app/settings' },
 ];
 
 export function Navbar() {
   const [active, setActive] = useState(0);
   const [loading, setLoading] = useState(true);
+  const navigate=useNavigate()
 
   useEffect(() => {
     const handleDOMContentLoaded = () => {
@@ -79,7 +81,10 @@ export function Navbar() {
           {...link}
           key={link.label}
           active={index === active}
-          onClick={() => setActive(index)}
+          onClick={() => {
+            setActive(index)
+            navigate(link.link)
+          }}
         />
       ) : (
         <Skeleton w={50} h={50} />

@@ -91,7 +91,7 @@ const Home = () => {
               visibleFrom="xs"
             />
           </Box>
-          <ScrollArea h={{xl:'35vh',lg:'35vh',md:400,sm:400,xs:400}} w="100%" style={{ border: "1px solid #1BAAF7" }}>
+          <ScrollArea h={{xl:'75vh',lg:'75vh'}} w="100%" style={{ border: "1px solid #1BAAF7" }}>
             <h1>Home</h1>
             <h1>Home</h1>
             <h1>Home</h1>
@@ -115,7 +115,7 @@ const Home = () => {
             <h1>Home</h1>
           </ScrollArea>
         </Group>
-        <Group mt={25}>
+        {/* <Group mt={25}>
           <Box
             p={5}
             style={{
@@ -162,7 +162,7 @@ const Home = () => {
             <h1>Home</h1>
             <h1>Home</h1>
           </ScrollArea>
-        </Group>
+        </Group> */}
       </Grid.Col>
     </Grid>
   );

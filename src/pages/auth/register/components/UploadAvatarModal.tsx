@@ -1,17 +1,17 @@
-import { Carousel } from "@mantine/carousel";
+import { Carousel,useAnimationOffsetEffect } from "@mantine/carousel";
 import {
   Box,
   Button,
-  Grid,
+  Card,
   Group,
   Image,
   Modal,
   Text,
   rem,
 } from "@mantine/core";
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import classes from "../Register.module.css";
-import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from "@mantine/dropzone";
+import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { IconPhoto, IconUpload, IconX } from "@tabler/icons-react";
 
 interface UploadAwatarProps {
@@ -23,7 +23,11 @@ const UploadAvatarModal = ({
   fileUploadModal,
   setFileUploadModal,
 }: UploadAwatarProps) => {
-  const [selectedAvatar, setSelectedAwatar] = useState("");
+  const [selectedAvatar, setSelectedAwatar] = useState(0);
+  const TRANSITION_DURATION = 200;
+  const [embla, setEmbla] = useState<any>(null);
+
+  useAnimationOffsetEffect(embla, TRANSITION_DURATION);
 
   const data = [
     "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png",
@@ -40,65 +44,53 @@ const UploadAvatarModal = ({
 
   return (
     <Modal
-      size="lg"
-      opened={fileUploadModal}
-      title="Select Awatar"
-      onClose={() => setFileUploadModal(!fileUploadModal)}
-    >
-      {/* <Group>
-  <Text >Use Default Awatars</Text>
-   <Grid>
-    {data.map((awatar:any,index:any)=>(
-      <Grid.Col span={3}>
-        <Image h={70} w={70} src={awatar}/>
-      </Grid.Col>
-    ))}
-   </Grid>
-  </Group> */}
-      <Group
+        size="xl"
+        opened={fileUploadModal}
+        transitionProps={{ duration: TRANSITION_DURATION }}
+        withCloseButton
+        onClose={() => setFileUploadModal(false)}
+      >
+           <Card
+        withBorder  
         style={{
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
+          alignItems:'center'
         }}
       >
-        <Text
+      <Text
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
-          Use Default Awatars
+          Select Default Avatar
         </Text>
-        <Carousel
-          controlSize={40}
-          align="center"
-          slideSize="100%"
-          height={220}
-          w={358}
-          loop
-          slideGap="md"
-          slidesToScroll={1}
-        >
-          {data.map((awatar: any, index: any) => (
+        <Carousel onSlideChange={(index)=>setSelectedAwatar(index)} controlSize={43} controlsOffset={-1} align="center" loop getEmblaApi={setEmbla} maw={300}>
+             {data.map((awatar: any, index: any) => (
             <Carousel.Slide
-              className={classes.awatarSlide}
+              className={index===selectedAvatar?classes.awatarSlide:''}
               key={index}
-              style={{ display: "flex", justifyContent: "center" }}
+              // style={{ display: "flex", justifyContent: "center" }}
             >
-              <Image radius={5} h={180} w={180} src={awatar} />
+              <Box  style={{ width: rem(300), height: rem(200),display:'flex',justifyContent:'center'}}>
+              <Image radius={5} 
+              style={{ width: rem(200), height: rem(200), objectFit: 'cover' }}
+              src={awatar} />
+              </Box>
             </Carousel.Slide>
           ))}
         </Carousel>
-        <Box>
+      <Box mt={15}>
           <Button variant="default">Submit</Button>
         </Box>
-      </Group>
-      <Group mt={50}>
+      </Card>
+      <Card withBorder bg="transparent" mt={10}>
         <Text
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
           Select Image from Device
         </Text>
         <Group
-          style={{ display: "flex", justifyContent: "center", width: "100%" }}
+          style={{ display: "flex",flexDirection:'column', justifyContent: "center", width: "100%" }}
         >
           <Dropzone
             onDrop={(files) => console.log("accepted files", files)}
@@ -157,9 +149,9 @@ const UploadAvatarModal = ({
           </Dropzone>
           <Button variant="default">Submit</Button>
         </Group>
-      </Group>
-    </Modal>
-  );
+      </Card>
+      </Modal>
+      );
 };
 
 export default UploadAvatarModal;
