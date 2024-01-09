@@ -1,13 +1,12 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Autocomplete, Grid, ScrollArea, Title, rem } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 import Stories from "../../components/stories/Stories";
 import { FriendCard } from "../../components/friends/FriendCard";
+import Post from "../../components/posts/Post";
 // maxHeight: "calc(100vh - 200px)",
 
 const Home = () => {
-  const viewport = useRef<HTMLDivElement>(null);
-
   return (
     <Grid m={10}>
       <Grid.Col span={{ xl: 8.5, lg: 8.5, md: 12, sm: 12, xs: 12 }}>
@@ -18,33 +17,30 @@ const Home = () => {
           <Title order={3}>Posts</Title>
           <ScrollArea.Autosize
             mah={{
-              xl: "70vh",
-              lg: "70vh",
-              md: "500px",
-              sm: "500px",
-              xs: "500px",
+              xl: "75vh",
+              lg: "75vh",
+              // md: "500px",
+              // sm: "500px",
+              // xs: "500px",
             }}
             // style={{ border: "1px solid #1BAAF7" }}
-            viewportRef={viewport}
           >
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
-            <h1>Home</h1>
+            <Grid p={5}>
+              {Array(10)
+                .fill(null)
+                .map((element, index) => (
+                  <Grid.Col
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                    span={{ lg: 6, xl: 6, md: 6, sm: 6, xs: 12 }}
+                  >
+                    <Post />
+                  </Grid.Col>
+                ))}
+            </Grid>
           </ScrollArea.Autosize>
         </Grid.Col>
       </Grid.Col>

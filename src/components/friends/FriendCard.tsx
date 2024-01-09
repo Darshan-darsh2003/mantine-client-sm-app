@@ -1,11 +1,19 @@
 import React from "react";
 import classes from "./FriendCard.module.css";
-import { Avatar, Text, Group, Box, Paper, ActionIcon, Tooltip } from "@mantine/core";
+import {
+  Avatar,
+  Text,
+  Group,
+  Box,
+  Paper,
+  ActionIcon,
+  Tooltip,
+} from "@mantine/core";
 import { IconPhoneCall, IconAt, IconUserPlus } from "@tabler/icons-react";
 
 export function FriendCard() {
   return (
-    <Box>
+    <Box className={classes.friendCard}>
       <Group>
         <Paper
           withBorder
@@ -27,9 +35,14 @@ export function FriendCard() {
               Software engineer
             </Text>
 
-            <Text fz="lg" style={{
-              whiteSpace: "nowrap",
-            }} fw={500} className={classes.name}>
+            <Text
+              fz="lg"
+              style={{
+                whiteSpace: "nowrap",
+              }}
+              fw={500}
+              className={classes.name}
+            >
               Robert Glassbreaker
             </Text>
 
@@ -52,17 +65,17 @@ export function FriendCard() {
             </Group>
           </Box>
           <Box px={20}>
-           <Tooltip label="Add Friend">
-           <ActionIcon
-              variant="default"
-              // color="blue"
-              radius="md"
-              size="xl"
-              style={{ width: "auto", height: "auto" }}
-            >
-              <IconUserPlus stroke={1.5} size="1rem" />
-            </ActionIcon>
-           </Tooltip>
+            <Tooltip label="Add Friend">
+              <ActionIcon
+                variant="default"
+                // color="blue"
+                radius="md"
+                size="xl"
+                style={{ width: "auto", height: "auto" }}
+              >
+                <IconUserPlus stroke={1.5} size="1rem" />
+              </ActionIcon>
+            </Tooltip>
           </Box>
         </Paper>
       </Group>

@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
-import { Center, Tooltip, UnstyledButton, Stack, rem, Skeleton } from "@mantine/core";
+import {
+  Center,
+  Tooltip,
+  UnstyledButton,
+  Stack,
+  rem,
+  Skeleton,
+} from "@mantine/core";
 import {
   IconHome2,
-  IconSettings,
   IconLogout,
   IconSwitchHorizontal,
   IconSearch,
   IconVideo,
   IconNotification,
   IconMessage,
+  IconUser,
 } from "@tabler/icons-react";
 // import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from "./Navbar.module.css";
@@ -45,13 +52,13 @@ const mockdata = [
     link: "/app/notifications",
   },
   { icon: IconMessage, label: "Conversation", link: "/app/conversation" },
-  { icon: IconSettings, label: "Settings", link: "/app/settings" },
+  { icon: IconUser, label: "Profile", link: "/app/profile" },
 ];
 
 export function Navbar() {
   const [active, setActive] = useState(0);
   const [loading, setLoading] = useState(true);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleDOMContentLoaded = () => {
@@ -79,8 +86,8 @@ export function Navbar() {
           key={link.label}
           active={index === active}
           onClick={() => {
-            setActive(index)
-            navigate(link.link)
+            setActive(index);
+            navigate(link.link);
           }}
         />
       ) : (
