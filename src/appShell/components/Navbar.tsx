@@ -57,30 +57,11 @@ const mockdata = [
 
 export function Navbar() {
   const [active, setActive] = useState(0);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleDOMContentLoaded = () => {
-      setLoading(true);
-    };
-
-    const handleWindowLoad = () => {
-      setLoading(false);
-    };
-
-    document.addEventListener("DOMContentLoaded", handleDOMContentLoaded);
-    window.addEventListener("load", handleWindowLoad);
-
-    return () => {
-      document.removeEventListener("DOMContentLoaded", handleDOMContentLoaded);
-      window.removeEventListener("load", handleWindowLoad);
-    };
-  }, []);
 
   const links = mockdata.map((link, index) => (
     <>
-      {!loading ? (
         <NavbarLink
           {...link}
           key={link.label}
@@ -90,9 +71,7 @@ export function Navbar() {
             navigate(link.link);
           }}
         />
-      ) : (
-        <Skeleton w={50} h={50} />
-      )}
+      
     </>
   ));
 

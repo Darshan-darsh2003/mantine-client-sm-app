@@ -1,5 +1,5 @@
 import React from "react";
-import { IconHeart, IconMessageCircle, IconShare } from "@tabler/icons-react";
+import { IconHeart, IconMessageCircle, IconShare, IconUserPlus } from "@tabler/icons-react";
 import {
   Card,
   Image,
@@ -11,6 +11,8 @@ import {
   Avatar,
   useMantineTheme,
   rem,
+  Tooltip,
+  Box,
 } from "@mantine/core";
 import classes from "./Post.module.css";
 
@@ -23,62 +25,68 @@ const Post = () => {
   const theme = useMantineTheme();
   return (
     <Card withBorder radius="md" className={classes.card}>
+      <Group mb={10} justify="space-between">
+      <Center>
+          <Avatar
+            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+            size="md"
+            radius="xl"
+            mr="xs"
+          />
+          <Text fz="md" fw={500} inline>
+            Jack Smith
+          </Text>
+        </Center>
+        <Tooltip label="Add Friend">
+        <ActionIcon
+                variant="default"
+                // color="blue"
+                radius="md"
+                size="lg"
+                style={{ width: "auto", height: "auto" }}
+              >
+                <IconUserPlus style={{ width: rem(20), height: rem(20) }} />
+              </ActionIcon>
+        </Tooltip>
+      </Group>
       <Card.Section p={5}>
         <Image radius={5} src="https://i.imgur.com/Cij5vdL.png" fit="contain" />
       </Card.Section>
-
-      <Badge
-        className={classes.rating}
-        variant="gradient"
-        gradient={{ from: "yellow", to: "red" }}
-      >
-        outstanding
-      </Badge>
 
       <Text className={classes.title} fw={500} component="a" {...linkProps}>
         Resident Evil Village review
       </Text>
 
-      <Text fz="sm" c="dimmed" lineClamp={4}>
-        Resident Evil Village is a direct sequel to 2017’s Resident Evil 7, but
-        takes a very different direction to its predecessor, namely the fact
-        that this time round instead of fighting against various mutated
-        zombies, you’re now dealing with more occult enemies like werewolves and
-        vampires.
-      </Text>
-
       <Group justify="space-between" className={classes.footer}>
-        <Center>
-          <Avatar
-            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
-            size={24}
-            radius="xl"
-            mr="xs"
-          />
-          <Text fz="sm" inline>
-            Bill Wormeater
-          </Text>
-        </Center>
+      
 
-        <Group gap={8} mr={0}>
-          <ActionIcon variant="default" className={classes.action}>
+        <Group justify="space-between" w="100%">
+         <Group>
+         <Tooltip label="like post"> 
+         <ActionIcon size="lg" variant="default" className={classes.action}>
             <IconHeart
-              style={{ width: rem(16), height: rem(16) }}
-              color={theme.colors.red[6]}
+              style={{ width: rem(25), height: rem(25) }}
+              // color={theme.colors.red[6]}
             />
           </ActionIcon>
-          <ActionIcon variant="default" className={classes.action}>
+          </Tooltip>
+          <Tooltip label="comment">
+          <ActionIcon size="lg" variant="default" className={classes.action}>
             <IconMessageCircle
-              style={{ width: rem(16), height: rem(16) }}
-              color={theme.colors.yellow[7]}
+              style={{ width: rem(25), height: rem(25) }}
+              // color={theme.colors.blue[7]}
             />
           </ActionIcon>
-          <ActionIcon variant="default" className={classes.action}>
+          </Tooltip>
+         </Group>
+        <Tooltip label="share">
+        <ActionIcon size="lg" variant="default" className={classes.action}>
             <IconShare
-              style={{ width: rem(16), height: rem(16) }}
-              color={theme.colors.blue[6]}
+              style={{ width: rem(25), height: rem(25) }}
+              // color={theme.colors.green[6]}
             />
           </ActionIcon>
+        </Tooltip>
         </Group>
       </Group>
     </Card>

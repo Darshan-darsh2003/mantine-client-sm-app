@@ -21,6 +21,7 @@ const data = [
 
   return (
     <Box
+    my={10}
     // style={{ border: "1px solid #1BAAF7" }}
      h={120}>
       <Carousel

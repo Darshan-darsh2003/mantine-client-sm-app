@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { IconPhoneCall, IconAt, IconUserPlus } from "@tabler/icons-react";
 
-export function FriendCard() {
+export function FriendCard({img}:any) {
   return (
     <Box className={classes.friendCard}>
       <Group>
@@ -26,7 +26,7 @@ export function FriendCard() {
           }}
         >
           <Avatar
-            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png"
+            src={img}
             size={100}
             radius="md"
           />
