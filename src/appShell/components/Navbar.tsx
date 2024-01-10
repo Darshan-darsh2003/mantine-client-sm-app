@@ -1,12 +1,5 @@
-import { useEffect, useState } from "react";
-import {
-  Center,
-  Tooltip,
-  UnstyledButton,
-  Stack,
-  rem,
-  Skeleton,
-} from "@mantine/core";
+import { useState } from "react";
+import { Center, Tooltip, UnstyledButton, Stack, rem } from "@mantine/core";
 import {
   IconHome2,
   IconLogout,
@@ -59,19 +52,17 @@ export function Navbar() {
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
 
-
   const links = mockdata.map((link, index) => (
     <>
-        <NavbarLink
-          {...link}
-          key={link.label}
-          active={index === active}
-          onClick={() => {
-            setActive(index);
-            navigate(link.link);
-          }}
-        />
-      
+      <NavbarLink
+        {...link}
+        key={link.label}
+        active={index === active}
+        onClick={() => {
+          setActive(index);
+          navigate(link.link);
+        }}
+      />
     </>
   ));
 

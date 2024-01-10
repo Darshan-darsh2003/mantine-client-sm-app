@@ -1,18 +1,20 @@
 import React from "react";
-import { IconHeart, IconMessageCircle, IconShare, IconUserPlus } from "@tabler/icons-react";
+import {
+  IconHeart,
+  IconMessageCircle,
+  IconShare,
+  IconUserPlus,
+} from "@tabler/icons-react";
 import {
   Card,
   Image,
   Text,
   ActionIcon,
-  Badge,
   Group,
   Center,
   Avatar,
-  useMantineTheme,
   rem,
   Tooltip,
-  Box,
 } from "@mantine/core";
 import classes from "./Post.module.css";
 
@@ -22,11 +24,10 @@ const Post = () => {
     target: "_blank",
     rel: "noopener noreferrer",
   };
-  const theme = useMantineTheme();
   return (
     <Card withBorder radius="md" className={classes.card}>
       <Group mb={10} justify="space-between">
-      <Center>
+        <Center>
           <Avatar
             src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
             size="md"
@@ -38,15 +39,15 @@ const Post = () => {
           </Text>
         </Center>
         <Tooltip label="Add Friend">
-        <ActionIcon
-                variant="default"
-                // color="blue"
-                radius="md"
-                size="lg"
-                style={{ width: "auto", height: "auto" }}
-              >
-                <IconUserPlus style={{ width: rem(20), height: rem(20) }} />
-              </ActionIcon>
+          <ActionIcon
+            variant="default"
+            // color="blue"
+            radius="md"
+            size="lg"
+            style={{ width: "auto", height: "auto" }}
+          >
+            <IconUserPlus style={{ width: rem(20), height: rem(20) }} />
+          </ActionIcon>
         </Tooltip>
       </Group>
       <Card.Section p={5}>
@@ -58,35 +59,41 @@ const Post = () => {
       </Text>
 
       <Group justify="space-between" className={classes.footer}>
-      
-
         <Group justify="space-between" w="100%">
-         <Group>
-         <Tooltip label="like post"> 
-         <ActionIcon size="lg" variant="default" className={classes.action}>
-            <IconHeart
-              style={{ width: rem(25), height: rem(25) }}
-              // color={theme.colors.red[6]}
-            />
-          </ActionIcon>
+          <Group>
+            <Tooltip label="like post">
+              <ActionIcon
+                size="lg"
+                variant="default"
+                className={classes.action}
+              >
+                <IconHeart
+                  style={{ width: rem(25), height: rem(25) }}
+                  // color={theme.colors.red[6]}
+                />
+              </ActionIcon>
+            </Tooltip>
+            <Tooltip label="comment">
+              <ActionIcon
+                size="lg"
+                variant="default"
+                className={classes.action}
+              >
+                <IconMessageCircle
+                  style={{ width: rem(25), height: rem(25) }}
+                  // color={theme.colors.blue[7]}
+                />
+              </ActionIcon>
+            </Tooltip>
+          </Group>
+          <Tooltip label="share">
+            <ActionIcon size="lg" variant="default" className={classes.action}>
+              <IconShare
+                style={{ width: rem(25), height: rem(25) }}
+                // color={theme.colors.green[6]}
+              />
+            </ActionIcon>
           </Tooltip>
-          <Tooltip label="comment">
-          <ActionIcon size="lg" variant="default" className={classes.action}>
-            <IconMessageCircle
-              style={{ width: rem(25), height: rem(25) }}
-              // color={theme.colors.blue[7]}
-            />
-          </ActionIcon>
-          </Tooltip>
-         </Group>
-        <Tooltip label="share">
-        <ActionIcon size="lg" variant="default" className={classes.action}>
-            <IconShare
-              style={{ width: rem(25), height: rem(25) }}
-              // color={theme.colors.green[6]}
-            />
-          </ActionIcon>
-        </Tooltip>
         </Group>
       </Group>
     </Card>
